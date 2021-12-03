@@ -68,7 +68,7 @@ class _LoginForm extends State<LoginForm>{
                         "Default SnackBar",
                         "This is the Getx default SnackBar",
                       );
-                      Get.to(AppRoutes.bottomNav);
+                      Get.toNamed(AppRoutes.bottomNav);
                     }
                   }
               ),
