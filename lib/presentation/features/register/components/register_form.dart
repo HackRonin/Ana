@@ -2,9 +2,11 @@
 import 'package:ana/app/config/app_color.dart';
 import 'package:ana/app/config/app_text_styles.dart';
 import 'package:ana/app/config/constants.dart';
+import 'package:ana/app/routes/app_routes.dart';
 import 'package:ana/app/widgets/keyboard.dart';
 import 'package:ana/app/widgets/primary_button.dart';
 import 'package:ana/presentation/controllers/register_controller.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -59,7 +61,7 @@ class _RegisterForm extends State<RegisterForm>{
                     if (_formKey.currentState!.validate()) {
                       _formKey.currentState!.save();
                       // if all are valid then go to success screen
-                      // Get.toNamed(AppRoutes.LOGIN);
+
                       KeyboardUtil.hideKeyboard(context);
 
                     }else{
@@ -67,25 +69,27 @@ class _RegisterForm extends State<RegisterForm>{
                         "Default SnackBar",
                         "This is the Getx default SnackBar",
                       );
+
                     }
                   }
               ),
               SizedBox(height: 50.h,),
-              Center(
-                child: RichText(
-                  text: TextSpan(
-                    text: Constants.ahacText,
-                    style: AppTextStyles.subInfo,
-                    children: <TextSpan>[
-                      TextSpan(text: " "+Constants.loginText, style: GoogleFonts.mulish(
-                          fontSize: 13.sp,
-                          color: AppColor.primaryAccent,
-                          fontWeight: FontWeight.w600
-                      ),),
-                      // TextSpan(text: ''),
-                    ],
-                  ),
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(Constants.ahacText, style: AppTextStyles.subInfo,),
+                  SizedBox(width: 5.w,),
+                  GestureDetector(
+                    onTap: (){
+                      Get.offAllNamed(AppRoutes.login);
+                    },
+                    child: Text(Constants.loginText, style: GoogleFonts.mulish(
+                      fontSize: 13.sp,
+                      color: AppColor.green,
+                      fontWeight: FontWeight.w600
+                    ),),
+                  )
+                ],
               ),
               SizedBox(height: 50.h,),
             ]

@@ -35,14 +35,6 @@ class _ForgotPasswordForm extends State<ForgotPasswordForm>{
               Text('Email',  style:  AppTextStyles.label,),
               SizedBox(height: 4.h,),
               buildEmailField(),
-              SizedBox(height: 11.h,),
-              Align(
-                alignment: Alignment.centerRight,
-                child: Text(
-                  'Forgot Password',
-                  style: AppTextStyles.forgotText ,
-                ),
-              ),
               SizedBox(height: 21.h,),
               PrimaryButton(text: "Request password reset",
                   onClick: (){
@@ -57,26 +49,27 @@ class _ForgotPasswordForm extends State<ForgotPasswordForm>{
                         "Default SnackBar",
                         "This is the Getx default SnackBar",
                       );
-                    //  Get.offAndToNamed(AppRoutes.register);
+                      Get.offAllNamed(AppRoutes.resetInfo);
                     }
                   }
               ),
               SizedBox(height: 50.h,),
-              Center(
-                child: RichText(
-                  text: TextSpan(
-                    text: 'Remembered your password?',
-                    style: AppTextStyles.subInfo,
-                    children: <TextSpan>[
-                      TextSpan(text: 'Back to Login', style: GoogleFonts.mulish(
-                          fontSize: 13.sp,
-                          color: AppColor.primaryAccent,
-                          fontWeight: FontWeight.w600
-                      ),),
-                      // TextSpan(text: ''),
-                    ],
-                  ),
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Remembered your password?', style: AppTextStyles.subInfo,),
+                  SizedBox(width: 5.w,),
+                  GestureDetector(
+                    onTap: (){
+                      Get.off(AppRoutes.login);
+                    },
+                    child: Text('Back to login', style: GoogleFonts.mulish(
+                        fontSize: 13.sp,
+                        color: AppColor.green,
+                        fontWeight: FontWeight.w600
+                    ),),
+                  )
+                ],
               ),
             ]
         ));

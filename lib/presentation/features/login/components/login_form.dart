@@ -44,9 +44,14 @@ class _LoginForm extends State<LoginForm>{
               SizedBox(height: 11.h,),
               Align(
                 alignment: Alignment.centerRight,
-                child: Text(
-                  'Forgot Password',
-                  style: AppTextStyles.forgotText ,
+                child: GestureDetector(
+                  onTap: (){
+                    Get.toNamed(AppRoutes.forgotPassword);
+                  },
+                  child: Text(
+                    'Forgot Password',
+                    style: AppTextStyles.forgotText ,
+                  ),
                 ),
               ),
               SizedBox(height: 21.h,),
@@ -63,26 +68,27 @@ class _LoginForm extends State<LoginForm>{
                         "Default SnackBar",
                         "This is the Getx default SnackBar",
                       );
-                      Get.offAndToNamed(AppRoutes.register);
+                      Get.to(AppRoutes.bottomNav);
                     }
                   }
               ),
               SizedBox(height: 50.h,),
-              Center(
-                child: RichText(
-                  text: TextSpan(
-                    text: Constants.dhvaText,
-                    style: AppTextStyles.subInfo,
-                    children: <TextSpan>[
-                      TextSpan(text: " "+Constants.createText, style: GoogleFonts.mulish(
-                          fontSize: 13.sp,
-                          color: AppColor.primaryAccent,
-                          fontWeight: FontWeight.w600
-                      ),),
-                      // TextSpan(text: ''),
-                    ],
-                  ),
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(Constants.dhvaText, style: AppTextStyles.subInfo,),
+                  SizedBox(width: 5.w,),
+                  GestureDetector(
+                    onTap: (){
+                      Get.toNamed(AppRoutes.register);
+                    },
+                    child: Text(Constants.createText, style: GoogleFonts.mulish(
+                        fontSize: 13.sp,
+                        color: AppColor.green,
+                        fontWeight: FontWeight.w600
+                    ),),
+                  )
+                ],
               ),
             ]
         ));
